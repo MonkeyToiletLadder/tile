@@ -55,6 +55,6 @@ Player = class {
 	end,
 	draw = function(self,camera)
 		love.graphics.setColor(1,1,1,1)
-		love.graphics.rectangle("line", math.floor(self.x - camera.x - 50), smath.floor(elf.y - camera.y - 50),self.width,self.height)
+		love.graphics.rectangle("line", math.floor(self.x - camera.x - 50), smath.floor(self.y - camera.y - 50),self.width,self.height)
 	end
 }

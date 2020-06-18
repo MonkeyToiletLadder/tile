@@ -30,20 +30,25 @@ table.insert(drawable,map)
 currentTile = 54
 
 function love.update(dt)
-	-- Place tile
+	if love.keyboard.isDown("s") then
+		map:save("save.txt")
+	end
+	if love.keyboard.isDown("l") then
+		map:load("save.txt")
+	end	-- Place tile
 	if love.mouse.isDown(1) then
 		mx,my = love.mouse.getPosition()
-		wx = math.floor((camera.x + mx - windowWidthHalf) / map.tw)
-		wy = math.floor((camera.y + my - windowHeightHalf) / map.th)
-		if wx >= 0 and wx < map.width and wy >= 0 and wy < map.height then
+		wx = math.floor((camera.x + mx - windowWidthHalf) / map.tw) + 1
+		wy = math.floor((camera.y + my - windowHeightHalf) / map.th) + 1
+		if wx >= 1 and wx < map.width + 1 and wy >= 1 and wy < map.height  + 1 then
 			map:add(wx,wy,currentTile)
 		end
 		-- Remove tile
 	elseif love.mouse.isDown(2) then
 		mx,my = love.mouse.getPosition()
-		wx = math.floor((camera.x + mx - windowWidthHalf) / map.tw)
-		wy = math.floor((camera.y + my - windowHeightHalf) / map.th)
-		if wx >= 0 and wx < map.width and wy >= 0 and wy < map.height then
+		wx = math.floor((camera.x + mx - windowWidthHalf) / map.tw) + 1
+		wy = math.floor((camera.y + my - windowHeightHalf) / map.th) + 1
+		if wx >= 1 and wx < map.width + 1 and wy >= 1 and wy < map.height + 1 then
 			map:remove(wx,wy,currentTile)
 		end
 	end
